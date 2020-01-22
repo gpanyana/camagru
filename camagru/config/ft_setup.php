@@ -1,6 +1,6 @@
 <?php
 require_once 'database.php';
-require 'connect.php'
+require 'connect.php';
 
 function create_db();
 

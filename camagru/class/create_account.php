@@ -13,12 +13,12 @@ if (isset($_POST['create_account'])){
 					DB::query('INSERT INTO users (username, email, password) VALUES (:username, :email, :password)', array(':username'=>$username, ':email'=>$email, ':password'=>password_hash($password, PASSWORD_BCRYPT)));
 					$to = $email;
 					$subject = "Email verification";
-					$msg = "<a href=\"http://localhost/camagru/verify.php?verify=$verify\"> Please click on link to register account </a>";
+					$msg = "<a href=\"http://localhost:8080/camagru/camagru/verify.php?verify=$verify\"> Please click on link to register account </a>";
 					$headers = 'From: camagru.com' . "\r\n";
 					$headers .= 'MIME-version: 1.0' . "\r\n";
 					$headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
 					mail($to, $subject, $msg, $headers);
-					header('location: create_account.php');
+					header('location: verify.php');
 					echo "Successful";
 				} else {echo "Invalid Email";}
 			} else {echo "password not strong";}
